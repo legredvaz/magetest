@@ -1,0 +1,42 @@
+<!-- 
+    This template file is for the Sign In settings.
+    File acts as a view file for our Sign In settings.
+-->
+<?php
+    // initialize all values
+    $adminLink = $this->showAdminLink() ?'checked':'';
+    $customerLink = $this->showCustomerLink() ?'checked':'';
+    $isOAuthConfigured = $this->isOAuthConfigured() && $this->isEnabled();
+    $disabled  = $isOAuthConfigured ? "" : 'disabled title="Disabled. Configure your Service Provider" ';
+    $formKey = $this->getBlockHtml('formkey');
+    $logoutUrl = $this->getAdminLogoutUrl();
+    $premiumlink = $this->getExtensionPageUrl('upgrade');
+
+echo '<div class="page" id="samlsettings">
+        <div class="mosp_table_layout">
+            <h3>SIGN IN OPTIONS</h3>
+            <hr>
+            <form id="signInSettings" method="post" action="">'.
+                $formKey .'
+                <input type="hidden" name="option" value="saveSingInSettings" />
+                <table>
+                    <tr>
+                        <td>
+                            <h4><b>Show Link on Default Login Page :</b></h4>
+                            <div style="margin-left:17px;margin-top:2%;">
+                                <input type="checkbox" name="mo_oauth_show_admin_link" id="mo_oauth_show_admin_link" 
+                                     '.$adminLink.' value="true"> Show the Login Link on the default admin login page.
+                                <br><br>
+                                <input type="checkbox" name="mo_oauth_show_customer_link" id="mo_oauth_show_customer_link" 
+                                    '.$customerLink.'  value="true">  Show the Login Link on the default customer login page.
+                                <br><br>
+                                <input type="button" name="link_setup" title="You can only make changes if you have configured your SP" 
+                                    onclick="document.getElementById(\'signInSettings\').submit();" 
+                                    value="Save" style="width:150px"/>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>';

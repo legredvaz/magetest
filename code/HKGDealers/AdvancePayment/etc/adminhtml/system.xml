@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="hkg" translate="label" sortOrder="120">
+            <label>HKG</label>
+        </tab>
+    <section id="hkgmain" translate="label" sortOrder="100" showInWebsite="1" showInStore="1" showInDefault="1">
+        <label>Advance Payment</label>
+        <tab>hkg</tab>
+        <resource>HKGDealers_AdvancePayment::parent</resource> <!-- To provide access to configuration to users using the roles configured in this module -->
+        <group id="hkg_general" showInWebsite="1" showInStore="1" showInDefault="1">
+            <label>API Endpoints</label>
+            <field id="order_sync" showInWebsite="1" showInStore="1" showInDefault="1" translate="label" type="text" sortOrder="100">
+                <label>Order Syncing API</label>
+                <comment>Insert DEJ order syncing API endpoint URL.</comment>
+            </field>
+            <field id="invoice_log" showInWebsite="1" showInStore="1" showInDefault="1" translate="label" type="text" sortOrder="120">
+                <label>Invoice Logger API</label>
+                <comment>Insert DEJ Invoice status logger API endpoint URL.</comment>
+            </field>
+            <field id="order_reports" showInWebsite="1" showInStore="1" showInDefault="1" translate="label" type="text" sortOrder="130">
+                <label>Order Reports API</label>
+                <comment>Insert DEJ Order report API endpoint URL (Old orders report submission).</comment>
+            </field>
+        </group>
+        <group id="hkg_emails" showInWebsite="1" showInStore="1" showInDefault="1">
+            <label>Invoicing Email Settings</label>
+            <field id="to_email" showInWebsite="1" showInStore="1" showInDefault="1" translate="label" type="text" sortOrder="100">
+                <label>Send Invoice Approval Email To</label>
+                <comment>Comma-separated.</comment>
+                <validate>validate-emails</validate>
+            </field>
+            <field id="cc_email" showInWebsite="1" showInStore="1" showInDefault="1" translate="label" type="text" sortOrder="120">
+                <label>Cc in Invoice Approval Email</label>
+                <comment>Comma-separated.</comment>
+                <validate>validate-emails</validate>
+            </field>
+        </group>
+    </section>
+
+    </system>
+</config>

@@ -1,0 +1,78 @@
+<!-- 
+    This template shows a registration page to the user.
+    This page is only shown if the registration status is 
+    not set in the system.
+-->
+
+<?php
+    $currentAdminUser = $this->getCurrentAdminUser()->getData();
+    $userEmail = $currentAdminUser['email'];
+    $firstName = $currentAdminUser['firstname'];
+    $lastName = $currentAdminUser['lastname'];
+    $site = $this->getBaseUrl();
+
+    $formKey = $this->getBlockHtml('formkey');
+
+    echo '<form name="f" method="post" action="" id="register-form">
+            '.$formKey.'  
+            <input type="hidden" name="option" value="registerNewUser" />
+            <div class="mo_idp_table_layout">
+                <h3>REGISTER WITH MINIORANGE</h3><hr>
+                <div class="mo_note">
+                    <div class="btn-link">Why do I need to register?</a></div>
+                    <div hidden class="collapse">
+                        Registration makes it easier for us to get in touch with you incase you need any help. We can help you with step by 
+                        step instructions on configuring the plugin.
+                    </div>
+                </div>
+                <div class="mo_note">
+                <div class="btn-link">I already have an account!</a></div>
+                <div hidden class="collapse">
+                    If you already have a miniOrange account then simply enter your credentials (Email & Password) below. Your account will be
+                    fetched automatically.
+                </div>
+            </div>
+                <table class="mosp_table_layout">
+                    <tr>
+                        <td><b><span style="color:#FF0000">*</span>Email:</b></td>
+                        <td><input class="mosp_table_textbox" type="email" name="email"
+                            required placeholder="person@example.com"
+                            value="'.$userEmail.'" /></td>
+                    </tr>
+                    <tr>
+                        <td><b>FirstName:</b></td>
+                        <td><input class="mosp_table_textbox" required type="text"
+                            name="firstName" value="'.$firstName.'" placeholder="First Name" /></td>
+                    </tr>
+                    <tr>
+                        <td><b>LastName:</b></td>
+                        <td><input class="mosp_table_textbox" required type="text"
+                            name="lastName" value="'.$lastName.'" placeholder="Last Name" /></td>
+                    </tr>
+                    <tr>
+                    <td><b>Site / Organization:</b></td>
+                    <td><input class="mosp_table_textbox" required type="text"
+                        name="companyName" value="'.$site.'" placeholder="Last Name" /></td>
+                    </tr>
+                    <tr>
+                        <td><b><span style="color:#FF0000">*</span>Password:</b></td>
+                        <td><input class="mosp_table_textbox" required type="password"
+                            name="password" placeholder="Choose your password (Min. length 6)" /></td>
+                    </tr>
+                    <tr>
+                        <td><b><span style="color="#FF0000">*</span>Confirm Password:</b></td>
+                        <td><input class="mosp_table_textbox" required type="password"
+                            name="confirmPassword" placeholder="Confirm your password" /></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><br /><input type="submit" name="submit" value="Register" style="width:100px;"
+                            class="button button-primary button-large" /></td>
+                    </tr>
+                </table>                 
+            </div>
+        </form>';
+?>
+
+
+

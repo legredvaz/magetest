@@ -1,0 +1,115 @@
+    <!--Pricing Tab-->
+    <?php
+
+    $idpsettings = $this->getExtensionPageUrl('idpsettings');
+    $hostname = $this->getMiniOrangeUrl();
+    $email = $this->getCustomerEmail();
+
+    echo '
+    <div class="page" id="pricing">
+        <h3>LICENSING PLANS</h3>
+        <hr>				
+        <table class="mo_oauth_pricing_table">
+            <tbody><tr>
+                <td>
+                    <div class="mo_oauth_thumbnail mo_oauth_pricing_free_tab">
+                        <div style="height:16%;">
+                            <h2 class="mo_oauth_pricing_header">Free</h2>
+                            <h3>( You are automatically on this plan )</h3>
+                        </div>
+                        <hr>
+                        <div style="height:8%;padding:2% 0;">
+                            <p class="mo_oauth_pricing_text">$0</p>
+                        </div>
+                        <hr>
+                        <div style="height:58%;padding:2% 0;">
+                            <p class="mo_oauth_pricing_text">
+                            1 OAuth / OpenID Connect provider Support<br>
+                            Auto Create Users (Upto 10 Users)<br>
+                            Basic Attribute Mapping (FirstName, Email)<br>
+                            Option to Add SSO Login Button<br>
+                            </p>
+                        </div>
+                        <hr>
+                        <div style="height:10%;padding:2% 0;">
+                            <p class="mo_oauth_pricing_text">Basic Support by Email</p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="mo_oauth_thumbnail mo_oauth_pricing_free_tab">
+                        <div style="height:16%;">
+                            <h3 class="mo_oauth_pricing_header">Premium</h3>
+                                <input type="submit" value="Upgrade Now" class="button button-primary button-large" 
+                                    onclick="mooauth_upgradeform(\'magento_oauth_premium_plan\')">
+                        </div>
+                        <hr>
+                        <div style="height:8%;padding:2% 0;">
+                            <p class="mo_oauth_pricing_text">
+                                    $349 - One Time Payment
+                            </p>
+                        </div>
+                        <hr>
+                        <div style="height:58%;padding:2% 0;">
+                            <p class="mo_oauth_pricing_text">
+                            1 OAuth / OpenID Connect provider Support<br>
+                            Auto Create Users (Upto 10 Users)<br>
+                            Basic Attribute Mapping (FirstName, Email)<br>
+                            Option to Add SSO Login Button<br>
+                            Customized Role Mapping<br>
+                            Customized Attribute Mapping<br>
+                            OAuth Single Logout<br>
+                            Auto redirect / Protect your complete site<br>
+                            Support for single-store<br>
+                            </p>
+                        </div>
+                        <hr>
+                        <div style="height:10%;padding:2% 0;">
+                            <p class="mo_oauth_pricing_text">Basic Support by Email</p>
+                        </div>
+                    </div>
+                </td>	
+                <td>
+                    <div class="mo_oauth_thumbnail mo_oauth_pricing_paid_tab">
+                        <div style="height:16%;">
+                            <h3 class="mo_oauth_pricing_header">Enterprise</h3>
+                                <input type="submit" value="Upgrade Now" class="button button-primary button-large" 
+                                    onclick="mooauth_upgradeform(\'magento_oauth_enterprise_plan\')">
+                        </div>
+                        <hr>
+                        <div style="height:8%;padding:2% 0;">
+                            <p class="mo_oauth_pricing_text">
+                            </p>
+                        </div>
+                        <hr>
+                        <div style="height:58%;padding:2% 0;">
+                            <p class="mo_oauth_pricing_text">
+                            1 OAuth / OpenID Connect provider Support<br>
+                            Auto Create Users (Upto 10 Users)<br>
+                            Basic Attribute Mapping (FirstName, Email)<br>
+                            Option to Add SSO Login Button<br>
+                            Customized Role Mapping<br>
+                            Customized Attribute Mapping<br>
+                            OAuth Single Logout<br>
+                            Auto redirect / Protect your complete site<br>
+                            Support for multi-store<br>
+                            </p>
+                        </div>
+                        <hr>
+                        <div style="height:10%;padding:2% 0;">
+                            <p class="mo_oauth_pricing_text">Premium Support</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="margin:2% 0 2% 2%;">
+            <form style="display:none;" id="mocf_loginform" action="'.$hostname.'/moas/login" 
+                target="_blank" method="post">
+                <input type="email" name="username" value="'.$email.'" />
+                <input type="text" name="redirectUrl" value="'.$hostname.'/moas/initializepayment" />
+                <input type="text" name="requestOrigin" id="requestOrigin"  />
+            </form>
+        </div>		
+    </div>';

@@ -1,0 +1,83 @@
+<!-- 
+    This template file is for the SAML Attribute/Role Mapping settings.
+    File acts as a view file for our attribute / role mapping page.
+-->
+
+<?php
+    //Attribute mapping
+    // initialze all values required to be shown on the page
+    $roles = $this->getAllRoles();
+    $groups = $this->getAllGroups();
+
+    $isEnabled = $this->isEnabled();
+    $disabled = !$isEnabled ? "disabled" : "";
+    $oauth_am_username = $this->getUserNameMapping();
+    $oauth_am_email = $this->getUserEmailMapping();
+    $oauth_am_first_name = $this->getFirstNameMapping();
+    $oauth_am_last_name = $this->getLastNameMapping();
+    $oauth_am_group_name = $this->getGroupMapping();
+
+    $oauth_am_account_matcher = $this->getAccountMatcher();
+
+    $emailSelected = $oauth_am_account_matcher == 'email' ? 'selected="selected"' : "";
+    $usernameSelected = $oauth_am_account_matcher == 'username' ? 'selected="selected"' : "";
+
+    $oauth_am_dont_allow_unlisted_user_role = $this->getDisallowUnlistedUserRole();
+    $mo_oauth_dont_create_user_if_role_not_mapped = $this->getDisallowUserCreationIfRoleNotMapped();
+
+    $default_role = $this->getDefaultRole();
+    $formKey = $this->getBlockHtml('formkey');
+    $premiumlink = $this->getExtensionPageUrl('upgrade');
+
+echo '<div class="page" id="attrmapping">
+        <div class="mooauth_table_layout">
+            <form name="f" method="post" action="">
+                '.$formKey.'
+                <input type="hidden" name="option" value="saveAttrSettings" />
+                <h3>Attribute Mapping (Optional)</h3><hr>
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <div class="mo_note">
+                                <span class="btn-link">What is Attribute Mapping?</span>
+                                <div hidden class="collapse">
+                                    <ol>
+                                        <li>Attributes are user details that are stored in your Identity Provider.</li>
+                                        <li>Attribute Mapping helps you to get user attributes from your IdP and map them to 
+                                            Magento user attributes like firstname, lastname etc.</li>
+                                        <li>While auto registering the users in your Magento site these attributes will automatically 
+                                            get mapped to your Magento user details.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><b>Users in Magento will be searched (existing Magento users) or created (new users) based
+                         on the Email attribute.</td>
+                    </tr>
+    
+                    <tr>
+                        <td style="width:150px;"><strong>Username <span style="color:red;">*</span>:</strong></td>
+                        <td><input type="text" name="oauth_am_username" placeholder="Enter attribute name for User Name"
+                        value="'.$oauth_am_username.'" /></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email <span style="color:red;">*</span>:</strong></td>
+                        <td><input type="text" name="oauth_am_email" placeholder="Enter attribute name for User Email"
+                        value="'.$oauth_am_email.'" /></td>
+                    </tr>
+                    <tr>
+
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><br /><input type="submit" style="width:100px;" name="submit" value="Save" 
+                            class="button button-primary button-large"/> &nbsp; 
+                        <br /><br />
+                        </td>
+                    </tr>
+                </table>
+                
+            </form>
+        </div>
+    </div>';

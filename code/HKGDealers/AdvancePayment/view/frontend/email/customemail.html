@@ -1,0 +1,19 @@
+<!--@subject {{trans "New invoice #%invoiceId for Order #%orderId" invoiceId=$invoiceid orderId=$orderid}} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<div class="ayakil-email-template">
+    <div class="ayakil-email-container">
+        <p class="ayakil-title">{{trans "Dear Admin"}} , </p>
+        <p>Kindly review the invoice and approve</p>
+        <p>{{trans 'Order #%orderId' orderId=$orderid |raw}} </p>
+        <p>{{trans 'Invoice #%invoiceId' invoiceId=$invoiceid |raw}} </p>
+        <p>{{trans 'Quantity : %quantity' quantity=$qty |raw}} </p>
+        <p>{{trans 'Grand Total : %gtal' gtal=$grandtotal |raw}} </p>
+        <p>{{trans 'Resampled : %resam' resam=$resample |raw}} </p>
+        <p>{{trans 'Retested : %retestsam' retestsam=$retest |raw}} </p>
+        <p>{{trans '<a href="%url">Approve</a>' url=$url |raw}}</p>
+    </div>
+</div>
+
+{{template config_path="design/email/footer_template"}}

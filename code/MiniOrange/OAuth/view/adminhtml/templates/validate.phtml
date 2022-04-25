@@ -1,0 +1,53 @@
+<?php
+
+$formKey = $this->getBlockHtml('formkey');
+
+echo '<h3>VERIFY YOUR EMAIL</h3><hr>
+        <form name="f" method="post" id="otp_form" action="">
+            '.$formKey.'
+            <input type="hidden" name="option" value="validateNewUser" />
+            <table class="mosp_table_layout">
+                <tr>
+                    <td><b><span style="color:#FF0000">*</span>Enter OTP:</b></td>
+                    <td><input class="mosp_table_textbox" autofocus="true" type="text" name="otp_token" 
+                        placeholder="ENTER OTP" pattern="{6,8}"/>
+                    </td><td><a class="btn-link" onclick="document.getElementById(\'resend_otp_form\').submit();">
+                        Resend OTP</a></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input type="submit" name="submit" value="Validate OTP" class="button button-primary button-large" />
+                        <input type="submit" name="submit"  value="Back" class="button button-primary button-large" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <form name="f" id="resend_otp_form" method="post" action="">
+            '.$formKey.'
+            <input type="hidden" name="option" value="resendOTP" />
+        </form>
+        <hr>
+        <div class="mo_note">
+            <h3>I did not recieve any email with OTP . What should I do ?</h3>
+            <div class="collapse" style="display:block;"> If you can\'t see the email from miniOrange in your mails, 
+                    please check your <b>SPAM</b> folder. If you don\'t see an email even in the SPAM folder, verify your 
+                    identity with our alternate method below.</div>
+        </div>
+        <br/>
+        <b>Enter your valid phone number here and verify your identity using one time passcode sent to your phone.</b>
+        <form id="mo_saml_register_with_phone_form" method="post" action="">
+            '.$formKey.'
+            <input type="hidden" name="option" value="sendOTPPhone" />
+            <table class="mosp_table_layout">
+                <tr>
+                    <td><input class="mosp_table_textbox" type="tel" id="phone_contact"
+                        pattern="[\+]\d{11,14}|[\+]\d{1,4}([\s]{0,1})(\d{0}|\d{9,10})" class="mo_saml_table_textbox" 
+                        name="phone" 
+                        title="Phone with country code eg. +1xxxxxxxxxx" required
+                        placeholder="Phone with country code eg. +1xxxxxxxxxx"
+                        value="" /></td>
+                        <td><input type="submit" value="Send OTP" class="button button-primary button-large" /></td>
+                </tr>
+            </table>
+        </form>';

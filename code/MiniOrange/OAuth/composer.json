@@ -1,0 +1,27 @@
+{
+    "name": "miniorange_inc/miniorange-oauth-sso",
+    "description": "miniOrange OAuth SSO extension support login into Magento using any OAuth or OpenID Connect provider",
+    "keywords": ["OAuth", "Service Provider", "Identity Provider", "SSO", "Single Sign On", "Authentication"],
+    
+    "type": "magento2-module",
+    "version": "2.1.2",
+     "license": [
+        "Commercial"
+    ],
+     "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "MiniOrange\\OAuth\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "miniOrange Team",
+            "homepage": "https://www.miniorange.com/",
+            "email": "info@xecurify.com"
+        }
+    ],
+    "support": {
+        "email": "info@xecurify.com"
+    }
+}

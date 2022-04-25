@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+     <add id="HKGDealers_AdvancePayment::OldOrders" title="Order Reports" module="HKGDealers_AdvancePayment" sortOrder="51" resource="HKGDealers_AdvancePayment::OldOrders"/>
+        <add id="HKGDealers_AdvancePayment::allorders" title="Reports" module="HKGDealers_AdvancePayment" sortOrder="10"  resource="HKGDealers_AdvancePayment::allorders" action="adminadvancepayment/oldorders/index" parent="HKGDealers_AdvancePayment::OldOrders"/>
+    </menu>
+</config>

@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Checkout\Block\Cart\Sidebar */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+?>
+
+<div data-block="minicart" class="minicart-wrapper">
+    <a class="action showcart" href="<?= $block->escapeUrl($block->getShoppingCartUrl()) ?>" data-bind="scope: 'minicart_content'">
+        <span class="text"><?= $block->escapeHtml(__('My Cart1')) ?></span>
+        <!-- <span class="counter qty empty"
+              data-bind="css: { empty: !!getCartParam('summary_count') == false && !isLoading() },
+               blockLoader: isLoading"> -->
+            <!--<span class="counter-number">--><!-- koc text: getCartParam('summary_count') --><!-- /ko --><!--</span>-->
+            <!--<span class="counter-label">-->
+            <!-- koc if: getCartParam('summary_count') -->
+                <!-- koc text: getCartParam('summary_count') --><!-- /ko -->
+                <!-- koc i18n: 'items' --><!-- /ko -->
+            <!-- /ko -->
+            <!--</span>-->
+        </span>
+    </a>
+
+</div>

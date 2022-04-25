@@ -1,0 +1,116 @@
+<!-- 
+    This template file is for the OAuth Provider settings.
+    File acts as a view file for our OAuth Provider settings.
+-->
+<?php
+    // initialize all values
+    $isEnabled = $this->isEnabled() ? "" : "disabled";
+
+    $appName = $this->getAppName();
+    $clientID = $this->getClientID();
+    $clientSecret = $this->getClientSecret();
+    $scope = $this->getScope();
+    $authorizeURL = $this->getAuthorizeURL();
+    $accessTokenURL = $this->getAccessTokenURL();
+    $getUserInfoURL = $this->getUserInfoURL();
+    $logoutURL = $this->getLogoutURL();
+    $callbackURL = $this->getCallBackUrl();
+    $isOAuthConfigured = !$this->isOAuthConfigured() ? 'disabled title="Please Configure an OAuth Provider"' : '';
+    $x509Certificate = $this->getX509Cert();
+	$isHeader =$this->isHeader() ? "checked" : ""; 
+	$isBody = $this->isBody() ? "checked" : "";
+    $testUrl = $this->getTestUrl();
+    $formKey = $this->getBlockHtml('formkey');
+
+echo '
+	<script>
+		var testURL = "'.$testUrl.'";
+	</script>
+	<div class="page" id="oauthprovider">
+		<div class="mosp_table_layout">
+			<form name="f" method="post" action="">
+				'.$formKey.'
+				<input type="hidden" name="option" value="saveOAuthSettings" />
+				<h3>CONFIGURE OAUTH</h3>
+				<hr>
+				<table style="width:100%;">
+
+					<tr>
+						<td><strong>Callback URL:</strong></td>
+						<td>
+							<p style="width: 100%;">'.$callbackURL.'</p>
+						</td>	
+					</tr>
+
+					<tr>
+					<td><strong>Setup Guide:</strong></td>
+					<td><p style="width: 100%;">Click <a href="https://plugins.miniorange.com/magento-oauth-single-sign-sso" target="_blank"><bold>here</bold></a> to view the setup guide page.</p>
+					</td>
+					</tr>
+
+					<tr>
+						<td style="width:200px;"><strong>OAuth Provider Name<span style="color:red;">*</span>:</strong></td>
+						<td><input type="text" name="mo_oauth_app_name" 
+								style="width: 100%;" value="'.$appName.'" required 
+								pattern="^\w*$" title="Only alphabets, numbers and underscore is allowed"/></td>
+					</tr>
+					<tr>
+						<td><strong>Client ID <span style="color:red;">*</span>:</strong></td>
+						<td><input type="text" name="mo_oauth_client_id" style="width: 100%;" 
+							value="'.$clientID.'" required /></td>
+					</tr>
+					<tr>
+						<td><strong>Client Secret <span style="color:red;">*</span>:</strong></td>
+						<td><input type="text" name="mo_oauth_client_secret" style="width: 100%;" 
+							value="'.$clientSecret.'" required /></td>
+					</tr>
+					<tr>
+						<td><strong>Scope <span style="color:red;">*</span>:</strong></td>
+						<td><input type="text" name="mo_oauth_scope" style="width: 100%;" 
+							value="'.$scope.'" required /></td>
+					</tr>
+					<tr>
+						<td><strong>Authorize Endpoint<span style="color:red;">*</span>:</strong></td>
+						<td>
+							<input type="url" name="mo_oauth_authorize_url" style="width: 100%;" 
+								value="'.$authorizeURL.'" required />
+						</td>
+					</tr>
+					<tr>
+						<td><strong>AccessToken Endpoint<span style="color:red;">*</span>:</strong></td>
+						<td>
+							<input type="url" name="mo_oauth_accesstoken_url" style="width: 100%;" 
+								value="'.$accessTokenURL.'" required />
+						</td>
+					</tr>
+					<tr>
+						<td><strong>Get User Info Endpoint<span style="color:red;">*</span>:</strong></td>
+						<td>
+							<input type="url" name="mo_oauth_getuserinfo_url" style="width: 100%;" 
+								value="'.$getUserInfoURL.'" required />
+						</td>
+					</tr>
+
+					<tr>
+					<td><strong>Send Client Credentials in:</strong> </td>
+					<td><input type="checkbox" name="send_header" value="Yes" '.$isHeader.' />Headers 
+					&nbsp;&nbsp;&nbsp;<input type="checkbox" name="send_body" value="Yes" '.$isBody.' />Body
+					</td>
+					
+					</tr>
+					
+					
+					
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+							<br /><input type="submit" name="submit" style="width:100px;" value="Save" class="button button-primary button-large" 
+							/> &nbsp; 
+							<input type="button" name="test" title="You can only test your Configuration after saving your Service Provider Settings." 
+								onclick="showTestWindow();" '.$isOAuthConfigured.' value="Test configuration" style="width:150px"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>';

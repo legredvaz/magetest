@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+   <preference for="Magento\Sales\Controller\Adminhtml\Order\Invoice\PrintAction"
+                type="HKGDealers\PDFInvoice\Controller\Adminhtml\Order\Invoice\PrintAction" /> 
+    <preference for="Magento\Sales\Model\Order\Pdf\Invoice" type="HKGDealers\PDFInvoice\Model\Order\Pdf\Invoice"/>
+    <preference for="Magento\Catalog\Controller\Product\View" type="HKGDealers\PDFInvoice\Controller\Product\View" />  
+    <preference for="Magento\Catalog\Controller\Category\View" type="HKGDealers\PDFInvoice\Controller\Category\View" />
+
+<type name="Magento\Customer\Model\Registration">
+        <plugin name="RegistrationDisable" type="HKGDealers\PDFInvoice\Plugin\Customer\Model\DisableRegistration" />
+    </type>
+</config>

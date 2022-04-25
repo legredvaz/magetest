@@ -1,0 +1,53 @@
+<?php
+
+$fomrKey = $this->getBlockHtml('formkey');
+
+echo '<form id="register_miniorange" name="f" method="post" action="">
+        <input type="hidden" name="option" value="loginExistingUser">
+        '.$fomrKey.'
+        <div class="login_miniorange">
+            <div><h3>LOGIN WITH MINIORANGE</h3></div>	
+            <hr>
+            <div id="panel1">
+                <div><b>Please Login with your miniOrange credentials</b></div><br />
+                <table class="table">
+                    <tr>
+                    <td><b><span style="color:#FF0000">*</span>Email:</b></td>
+                    <td><input class="" type="email" name="email"  id="loginemail" autofocus="true" 
+                        required placeholder="person@example.com" style="width:400px;" value=""/></td>
+                    </tr>
+                    <tr>
+                    <td><b><span style="color:#FF0000">*</span>Password:</b></td>
+                    <td><input class="" type="password" name="password" style="width:400px;" 
+                        placeholder="Enter your password" pattern="[a-zA-Z0-9!@#$\.%^&*]{6,24}"/></td>
+                    </tr>
+                </table>
+                <br>
+                    <div class="button-align"><input type="submit" name="submit" value="Submit" class="" /></div>
+            </div>
+        </div>
+    </form>
+    
+		 <form>
+				 <input type="hidden" name="option" value="goBackToRegistrationPage">
+				'.$fomrKey.'
+				 <div class="button-align"><input type="submit" name="submit" value="Go Back" class="" /></div>
+		 </form>
+    
+    <br/><hr><br/>
+    
+    <div><b>Forgot your Password? Use the form below to reset your password.</b></div><br />
+    <form id="forgot_password" name="f" method="post" action="">
+        '.$fomrKey.'
+        <input type="hidden" name="option" value="resetPassword">
+        <div class="login_miniorange">
+            <table class="table">
+                <tr>
+                    <td><b><span style="color:#FF0000">*</span>Email:</b></td>
+                    <td><input class="" type="email" name="email"  id="loginemail" autofocus="true" 
+                        required placeholder="person@example.com" style="width:400px;" value=""/></td>
+                    <td><input type="submit" value="Forgot Password?" class="" /></td>
+                </tr>
+            </table>
+        </div>
+    </form>';

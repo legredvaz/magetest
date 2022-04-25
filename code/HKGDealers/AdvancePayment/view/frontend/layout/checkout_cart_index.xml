@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="checkout.cart.totals.container">
+            <block class="HKGDealers\AdvancePayment\Block\Cart\Paylater" 
+                name="checkout.cart.custom.block" 
+                before="checkout.cart.totals" 
+                template="HKGDealers_AdvancePayment::paylater.phtml" />
+        </referenceContainer>
+    </body>
+</page>

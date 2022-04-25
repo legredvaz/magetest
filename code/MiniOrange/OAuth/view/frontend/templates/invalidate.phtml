@@ -1,0 +1,40 @@
+<?php
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+if ($customerSession->isLoggedIn()) {
+    
+    $fullname = $customerSession->getCustomer()->getName();
+    $fname = $customerSession->getCustomer()->getFirstname();
+    if (!empty($fullname)) {
+    
+        ?>
+        <script>
+        // <![CDATA[
+            require([
+                'jquery',
+                'invalidateScript'
+            ], function ($, script) {
+                
+                $( window ).load(function() {
+                  
+                    var delay = 0;
+                    while(delay<5000) {
+                        setTimeout(function() { mo_invalidate($, "<?php echo $fullname;?>", "<?php echo $fname;?>"); }, delay);
+                        delay += 100;
+                    }
+                  
+                });
+
+                
+            });
+            // ]]>
+        </script>
+
+        <?php
+    
+    }
+}
+  
+  
+?>
